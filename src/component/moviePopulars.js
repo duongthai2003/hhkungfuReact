@@ -41,7 +41,7 @@ function MoviePopulars() {
                     <li className="head_favori_item">
                       <div className="head_favori_item_link" href="">
                         <img
-                          src={`http://localhost:2200/movies/poster/${subarray.poster}`}
+                          src={`${process.env.REACT_APP_PATH_IMG}${subarray.poster}`}
                           alt=""
                           className="head_favori_img"
                         />
