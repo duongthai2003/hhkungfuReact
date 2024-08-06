@@ -73,7 +73,6 @@ function DefautLayout({ children }) {
     heightpercent > 50 ? setArrouwUp(true) : setArrouwUp(false);
   };
   const handleLogout = () => {
-    console.log(3245675643);
     localStorage.removeItem("accessToken");
     setLoginSuccess(false);
   };
@@ -220,7 +219,7 @@ function DefautLayout({ children }) {
           <Login isOpen={showModalLoggin} setIsOpen={setShowModalLoggin} />
         </Row>
       </div>
-      <div ref={bodyelemen} className="body">
+      <div ref={bodyelemen} className="body" style={{ flex: "1" }}>
         <div
           className={`arrow_up`}
           style={{ display: `${arrouwUp ? "block" : "none"}` }}
@@ -264,18 +263,15 @@ function DefautLayout({ children }) {
 
           <div>{children}</div>
         </div>
-
-        <div className="botoom">
-          <div className="grid wide">
-            <div
-              style={{ display: "flex", justifyContent: "space-between" }}
-              className="row"
-            >
-              <p className="bottom_tex">
-                © Vietsub bởi Hoạt Hình Kungfu Subteam
-              </p>
-              <p className="bottom_web">Web phim hhkungfu.tv </p>
-            </div>
+      </div>
+      <div className="botoom">
+        <div className="grid wide">
+          <div
+            style={{ display: "flex", justifyContent: "space-between" }}
+            className="row"
+          >
+            <p className="bottom_tex">© Vietsub bởi Hoạt Hình Kungfu Subteam</p>
+            <p className="bottom_web">Web phim hhkungfu.tv </p>
           </div>
         </div>
       </div>

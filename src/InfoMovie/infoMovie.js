@@ -41,7 +41,12 @@ function InfoMovie() {
         >
           <Col span={16} className="gutter-row">
             <div className=" movie_infor l-12">
-              {data && <InfoMovieHeader data={data.movie} />}
+              {data && (
+                <InfoMovieHeader
+                  data={data.movie}
+                  lastEpisode={data?.episodes}
+                />
+              )}
             </div>
             <div className="tapphim">
               <div className="tapphim_nabar">

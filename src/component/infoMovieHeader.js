@@ -1,6 +1,11 @@
 import { Col, Row } from "antd";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ComponentContext } from "../hook/ComponentContext";
 
-function InfoMovieHeader({ data }) {
+function InfoMovieHeader({ data, lastEpisode }) {
+  const { moviId } = useContext(ComponentContext);
+
   return (
     <>
       <Col span={8} className="l-4 movie_demo c-12">
@@ -10,10 +15,13 @@ function InfoMovieHeader({ data }) {
           className="movie_demo_img"
         />
         <div className="movie_demo_watchmove">
-          <a href="" className="movie_demo_link">
+          <Link
+            to={`/${moviId}/${lastEpisode[lastEpisode.length - 1]?._id}`}
+            className="movie_demo_link"
+          >
             <i className="movie_demo_iconplay fa-solid fa-play"></i>
             <span className="movie_demo_watch">xem phim</span>
-          </a>
+          </Link>
         </div>
       </Col>
       <Col span={16} className="l-8 movie_readinfor">
