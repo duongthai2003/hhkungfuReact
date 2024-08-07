@@ -3,7 +3,7 @@ import { ShowEpisodeCss } from "../css/showEpisodeCss";
 import HTTP from "../HTTP";
 import { ComponentContext } from "../hook/ComponentContext";
 import "@fortawesome/fontawesome-free/js/all";
-import { Col, Row } from "antd";
+import { Col, Row, Spin } from "antd";
 import MoviePopulars from "../component/moviePopulars";
 import { InfoCss } from "../css/infoCss";
 import MovieDescription from "../component/movieDescription";
@@ -40,6 +40,7 @@ function ShowMovie() {
   const [speedvalue, setSpeedvalue] = useState(1);
   const [isQuality, setIsQuality] = useState(false);
   const [qualityValue, setqualityValue] = useState("tự động");
+  const [loading, setLoading] = useState(false);
 
   const videoSpeedArrays = [0.25, 0.5, 0.75, 1, 1.5, 1.75, 2];
   const videoQualityArray = ["720p", "480p", "360p", "240p", "144p", "tự động"];
@@ -230,10 +231,24 @@ function ShowMovie() {
                   }}
                   onLoadedData={(e) => {
                     handleTimeUpdate(e.target.duration, setVideoDuration);
+                    setLoading(false);
+                  }}
+                  onLoadStart={() => {
+                    setLoading(true);
                   }}
                 >
                   {" "}
                 </video>
+                <Spin
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    color: "#fff",
+                  }}
+                  spinning={loading}
+                />
                 <div className="phim_navbar">
                   <div className="navbar_botom_overlay"></div>
                   <input

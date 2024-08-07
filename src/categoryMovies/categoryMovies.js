@@ -1,4 +1,4 @@
-import { Row, Col } from "antd";
+import { Row, Col, Spin } from "antd";
 import MoviePopulars from "../component/moviePopulars";
 import FirmItem from "../component/firmItem";
 import { useContext, useEffect, useState } from "react";
@@ -10,26 +10,29 @@ function CategoryMovies() {
   const { selectCategoryId, setSelectCategoryId } =
     useContext(ComponentContext);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const paramsUrl = useParams();
 
   const callApiCategoryMovie = async () => {
     try {
+      setLoading(true);
       const res = await HTTP.get(`movies/movieOfCategory/${selectCategoryId}`);
       setData(res.data.data);
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
-  console.log(data);
-  console.log(paramsUrl);
-  console.log(selectCategoryId);
+
   useEffect(() => {
     selectCategoryId === "" && setSelectCategoryId(paramsUrl.categoryID);
     callApiCategoryMovie();
   }, [selectCategoryId]);
   return (
     <Row gutter={[16, 24]}>
+      <Spin spinning={loading} fullscreen={true} size="large" />
       <Col span={16} clasclassName="gutter-row">
         <div className="pronew_head">
           <h3 className="new_h3">{data?.category?.categoryName}</h3>

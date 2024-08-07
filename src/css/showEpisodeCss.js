@@ -13,6 +13,7 @@ export const ShowEpisodeCss = styled.div`
   .video {
     width: 100%;
     height: 100%;
+    background: #000;
     // max-height: 450px;
     // object-fit: cover;
   }
@@ -21,7 +22,7 @@ export const ShowEpisodeCss = styled.div`
     bottom: 0;
     color: #fff;
     width: 100%;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.4);
     padding: 0 10px;
   }
   .navbar_list_input {

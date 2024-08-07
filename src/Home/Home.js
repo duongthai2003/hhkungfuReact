@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import HTTP from "../HTTP";
-import { Col, Row } from "antd";
+import { Col, Row, Spin } from "antd";
 import FirmItem from "../component/firmItem";
 import ShowMovieDate from "../component/showMovieDate";
 import MoviePopulars from "../component/moviePopulars";
@@ -8,12 +8,16 @@ import MoviePopulars from "../component/moviePopulars";
 function Home() {
   const [data, setData] = useState();
   const [movieOfDate, setMovieOfDate] = useState([]);
+  const [loading, setLoading] = useState(false);
   const callApiMovie = async () => {
     try {
+      setLoading(true);
       const dataItem = await HTTP.get("movies?start=0&limit=10");
       await setData(dataItem.data.data);
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -23,6 +27,7 @@ function Home() {
 
   return (
     <div className="contarner">
+      <Spin fullscreen={true} spinning={loading} size="large" />
       <div className="fanfage"></div>
 
       <div className="pro_new">
