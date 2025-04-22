@@ -9,11 +9,7 @@ function InfoMovieHeader({ data, lastEpisode }) {
   return (
     <>
       <Col span={8} className="l-4 movie_demo c-12">
-        <img
-          src={process.env.REACT_APP_PATH_IMG + data.poster}
-          alt=""
-          className="movie_demo_img"
-        />
+        <img src={data.poster} alt="" className="movie_demo_img" />
         <div className="movie_demo_watchmove">
           <Link
             to={`/${moviId}/${lastEpisode[lastEpisode.length - 1]?._id}`}

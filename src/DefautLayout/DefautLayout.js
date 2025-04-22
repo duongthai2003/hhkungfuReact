@@ -168,10 +168,7 @@ function DefautLayout({ children }) {
                               <Link to={`/${item.movieId?._id}`}>
                                 <div className="head_favori_item_link">
                                   <img
-                                    src={`${
-                                      process.env.REACT_APP_PATH_IMG +
-                                      item.movieId?.poster
-                                    }`}
+                                    src={item.movieId?.poster}
                                     alt=""
                                     className="head_favori_img"
                                   />

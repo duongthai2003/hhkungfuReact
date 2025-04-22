@@ -211,9 +211,7 @@ function ShowMovie() {
                 <video
                   ref={videoTag}
                   // autoPlay={true}
-                  src={
-                    process.env.REACT_APP_PATH_EPISODEFIRM + DataVideo?.nameFile
-                  }
+                  src={DataVideo?.nameFile}
                   className="video"
                   onPlay={() => {
                     setIsPlay(true);

@@ -13,11 +13,7 @@ function FirmItem({ data }) {
       <div className="product_item" onClick={handleClick}>
         <Link to={`/${data._id}`}>
           <div className="new_product_tap">Tập {data.LatestEpisode}</div>
-          <img
-            src={process.env.REACT_APP_PATH_IMG + data.poster}
-            alt=""
-            className="new_product_img"
-          />
+          <img src={data.poster} alt="" className="new_product_img" />
           <div className="new_product_name_paren">
             <div className="new_product_name">{data.namefirm}</div>
           </div>
